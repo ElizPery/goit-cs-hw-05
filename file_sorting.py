@@ -39,11 +39,12 @@ async def copy_file(source: AsyncPath):
     await aioshutil.copyfile(source, destination)
 
     # Print info about copying file
-    print(f'Copied from {source.name} to {destination.name} directory')
+    logger.info(f'Copied from {source.name} to {destination.name} directory')
     
 
 if __name__ == '__main__':
     try:
+        logger = logging.getLogger()
         logging.basicConfig(level=logging.INFO, format="%(threadName)s %(message)s")
 
         args = argparse.ArgumentParser()
